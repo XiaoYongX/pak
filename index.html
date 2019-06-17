@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        body{
+            position: relative;
+            }
+        #do{
+            position: absolute;
+            background: url("img/bj.png") no-repeat;
+            background-size:100% 100%;
+        }
+        #so{
+            position: absolute;
+            left: -100%;
+            transition: left 1s;
+            background: url("img/df.png") no-repeat -250px 0;
+            background-size:65% 100%;
+        }
+        #ybj{
+            position: absolute;
+            opacity: 0;
+            transition: opacity 2s;
+            background:url("img/ybj.png") no-repeat 100% 0px;
+            /*background-size:23% 150%;*/
+        }
+        #bt{
+            position: fixed;
+            margin-top: -50%;
+            transition: margin-top 1s;
+            background:url("img/bt.png") no-repeat 50% 2%;
+        }
+        #nr{
+            position: absolute;
+            opacity: 0;
+            transition: opacity .8s;
+            background:url("img/wz.png") no-repeat 50% 55%,url("img/jrpt.png") no-repeat 98% 95%;
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="a" id="do"></div>
+<div class="a" id="so"></div>
+<div class="a" id="ybj"></div>
+<div class="a" id="bt"></div>
+<div class="a" id="nr"></div>
+</body>
+<script>
+    window.onload=function () {
+        var w =window.innerWidth;
+        var h = window.innerHeight;
+        console.log(w,h)
+       /* document.getElementById("so").style.width = w+"px";
+        document.getElementById("so").style.height = h;*/
+        for(var i = 0 ; i < document.getElementsByClassName("a").length ; i++){
+            document.getElementsByClassName("a")[i].style.width = w+"px";
+            document.getElementsByClassName("a")[i].style.height = h+"px";
+
+        }
+
+        var bj_out = window.setTimeout(function () {
+            document.getElementById("so").style.left="0";
+            document.getElementById("ybj").style.opacity="1";
+            window.clearTimeout(bj_out);
+            var next_out = window.setTimeout(function (){
+                document.getElementById("bt").style.marginTop="0.5%";
+                window.clearTimeout(next_out);
+                var nr_out = window.setTimeout(function () {
+                    document.getElementById("nr").style.opacity="1";
+                    window.clearTimeout(nr_out);
+                },1300)
+            },1000)
+        },10);
+    };
+
+
+
+
+</script>
+</html>
